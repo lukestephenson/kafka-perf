@@ -16,7 +16,7 @@ lazy val root = (project in file("."))
         "dev.zio" %% "zio-interop-monix" % "3.4.2.0.0",
         "dev.zio" %% "zio-kafka" % "2.0.1",
 
-        "com.zendesk" %% "gourmand" % "1.0.17",
+        "io.monix" %% "monix" % "3.4.0"
       )
     }
   )
