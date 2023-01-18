@@ -24,7 +24,7 @@ object ZIOKafkaPerf extends ZIOAppDefault {
   }
 
   def withProducer[T](producerConfig: Map[String, Object])(task: Producer => Task[T]): Task[T] = {
-    val settings = ProducerSettings(List.empty).withProperties(producerConfig)
+    val settings = ProducerSettings(List.empty).withProperties(producerConfig).withSendBufferSize(1024*1024*4)
     val zioTask: Task[T] = ZIO.scoped {
       Producer.make(settings).flatMap { kafkaProducer =>
         task(kafkaProducer)
